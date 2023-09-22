@@ -1,0 +1,8 @@
+<%= turbo_stream.prepend "todos" do %>
+    <%= turbo_frame_tag @todo do %>
+        <%= render "todo", todo: @todo %>
+    <% end %>
+<% end %>
+<%= turbo_stream.update "new_todo" do %>
+    <%= render "new_todo" %>
+<% end %>

@@ -1,0 +1,17 @@
+<h1>Every Todo you could possibly imagine</h1>
+<div>
+    <div id="new_todo">
+        <%= render "new_todo" %>
+    </div>
+    <%= turbo_frame_tag "todos" do %>
+        <div id="todos">
+            <% @todos.each do |todo| %>
+                <%= turbo_frame_tag todo do %>
+                    <%= render "todo", todo: todo %>
+                <% end %>
+            <% end %>
+        </div>
+        <%= link_to "Next Page", todos_path + "?page=#{@page + 1}" %>
+    <% end %>
+    
+</div>
